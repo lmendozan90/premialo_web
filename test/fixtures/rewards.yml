@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  points: 1
+  title: MyString
+  description: MyText
+  available_from: 2025-04-15 16:47:39
+  available_to: 2025-04-15 16:47:39
+
+two:
+  points: 1
+  title: MyString
+  description: MyText
+  available_from: 2025-04-15 16:47:39
+  available_to: 2025-04-15 16:47:39

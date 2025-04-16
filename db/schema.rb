@@ -10,5 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 0) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_15_214739) do
+  create_table "rewards", force: :cascade do |t|
+    t.integer "points"
+    t.string "title", null: false
+    t.text "description", null: false
+    t.datetime "available_from"
+    t.datetime "available_to"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 end

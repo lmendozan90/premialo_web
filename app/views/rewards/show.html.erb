@@ -1,0 +1,9 @@
+<% if @reward %>
+  <h1><%= @reward.title %></h1>
+  <p>Points: <%= @reward.points %></p>
+  <p><%= @reward.description %></p>
+  <p><%= link_to 'Edit', edit_reward_path(@reward) %></p>
+  <p><%= link_to 'Back to Rewards', rewards_path %></p>
+<% else %>
+  <p>Reward not found.</p>
+<% end %>

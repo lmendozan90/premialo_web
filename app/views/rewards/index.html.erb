@@ -1,0 +1,27 @@
+<div>Rewards</div>
+<div>
+  <%= link_to "+New Reward", new_reward_path %>
+</div>
+
+<% if @rewards.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Points</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @rewards.each do |reward| %>
+        <tr>
+          <td><%= link_to reward.title, reward_path(reward) %></td>
+          <td><%= reward.points %></td>
+<!--          <td><%#= link_to 'Edit', edit_reward_path(reward) %></td>-->
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No rewards available.</p>
+<% end %>
