@@ -1,7 +1,10 @@
 class RewardsController < ApplicationController
   before_action :set_reward, only: [:show, :edit, :update]
   def index
-    @rewards = Reward.all
+    @active_rewards = Reward.active
+    @draft_rewards = Reward.draft
+    @expired_rewards = Reward.expired
+    @scheduled_rewards = Reward.scheduled
   end
 
   def show
@@ -39,7 +42,7 @@ class RewardsController < ApplicationController
 
   private
   def reward_params
-    params.require(:reward).permit(:title, :description, :points, :available_from, :available_to)
+    params.require(:reward).permit(:title, :description, :points, :available_from, :available_until)
   end
 
   def set_reward
