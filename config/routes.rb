@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :rewards
+  resources :companies do
+    resources :rewards
+  end
 
   root "rewards#index"
 end

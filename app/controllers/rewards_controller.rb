@@ -1,10 +1,12 @@
 class RewardsController < ApplicationController
   before_action :set_reward, only: [:show, :edit, :update]
+  before_action :set_company
   def index
-    @active_rewards = Reward.active
-    @draft_rewards = Reward.draft
-    @expired_rewards = Reward.expired
-    @scheduled_rewards = Reward.scheduled
+    rewards = @company.rewards
+    @active_rewards = rewards.active
+    @draft_rewards = rewards.draft
+    @expired_rewards = rewards.expired
+    @scheduled_rewards = rewards.scheduled
   end
 
   def show
@@ -47,5 +49,9 @@ class RewardsController < ApplicationController
 
   def set_reward
     @reward = Reward.find(params[:id])
+  end
+
+  def set_company
+    @company = Company.find(params[:company_id])
   end
 end
