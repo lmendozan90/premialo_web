@@ -8,6 +8,7 @@ class Reward < ApplicationRecord
   validates :available_from, presence: true, if: :available_until?
 
   belongs_to :company
+  has_many :users, through: :company
 
   scope :draft, -> { where(available_from: nil) }
   scope :scheduled, -> { where.not(available_from: nil).where("available_from > ?", Time.current) }

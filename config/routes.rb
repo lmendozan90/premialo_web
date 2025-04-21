@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  resources :companies do
-    resources :rewards
-  end
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
+
+  resources :rewards
+
 
   root "rewards#index"
 end

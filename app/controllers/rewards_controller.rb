@@ -1,8 +1,8 @@
 class RewardsController < ApplicationController
   before_action :set_reward, only: [:show, :edit, :update]
-  before_action :set_company
+  before_action :authenticate_user!
   def index
-    rewards = @company.rewards
+    rewards = current_user.company.rewards
     @active_rewards = rewards.active
     @draft_rewards = rewards.draft
     @expired_rewards = rewards.expired
@@ -18,6 +18,7 @@ class RewardsController < ApplicationController
 
   def create
     @reward = Reward.new(reward_params)
+    @reward.company_id = current_user.company.id
     if @reward.save
       redirect_to @reward, notice: "Reward was successfully created."
     else
@@ -49,9 +50,5 @@ class RewardsController < ApplicationController
 
   def set_reward
     @reward = Reward.find(params[:id])
-  end
-
-  def set_company
-    @company = Company.find(params[:company_id])
   end
 end
