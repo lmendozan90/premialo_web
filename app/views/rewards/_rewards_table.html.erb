@@ -1,29 +1,19 @@
 <% if rewards.any? %>
-  <p><%= title %></p>
-  <table>
-    <thead>
-    <tr>
-      <th>Title</th>
-      <th>Points</th>
-      <th>Description</th>
-      <th>Available From</th>
-      <th>Available Until</th>
-      <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
+  <div class="mb-6">
+    <h1 class="text-3xl font-semibold text-gray-800"><%= title %></h1>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     <% rewards.each do |reward| %>
-      <tr>
-        <td><%= link_to reward.title, reward_path(reward) %></td>
-        <td><%= reward.points %></td>
-        <td><%= reward.description %></td>
-        <td><%= reward.available_from %></td>
-        <td><%= reward.available_until %></td>
-        <!--          <td><%#= link_to 'Edit', edit_reward_path(reward) %></td>-->
-      </tr>
+      <div class="bg-white rounded-2xl shadow hover:shadow-md transition-shadow p-6">
+        <h2 class="text-xl font-bold text-gray-800 mb-2"><%= link_to reward.title, reward_path(reward) %></h2>
+        <p class="text-gray-600"><%= reward.description %></p>
+      </div>
     <% end %>
-    </tbody>
-  </table>
+  </div>
 <% else %>
-  <p>No <%= title %> rewards available.</p>
+  <div class="text-center py-16">
+    <h2 class="text-2xl font-semibold text-gray-700 mb-2">No <%= title %> rewards available</h2>
+    <p class="text-gray-500">Start by creating a new reward for your company.</p>
+  </div>
 <% end %>

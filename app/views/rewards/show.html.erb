@@ -1,11 +1,22 @@
 <% if @reward %>
-  <h1><%= @reward.title %></h1>
-  <p>Points: <%= @reward.points %></p>
-  <p><%= @reward.description %></p>
-  <p><%= @reward.available_from %></p>
-  <p><%= @reward.available_until %></p>
-  <p><%= link_to 'Edit', edit_reward_path(@reward) %></p>
-  <p><%= link_to 'Back to Rewards', rewards_path %></p>
+  <div class="max-w-xl mx-auto bg-white p-6 rounded-lg shadow-md space-y-4">
+    <h1 class="text-2xl font-semibold text-slate-800"><%= @reward.title %></h1>
+
+    <div class="text-slate-600">
+      <p><span class="font-medium text-slate-700">Points:</span> <%= @reward.points %></p>
+      <p><span class="font-medium text-slate-700">Description:</span> <%= @reward.description %></p>
+      <p><span class="font-medium text-slate-700">Available From:</span> <%= @reward.available_from.strftime("%B %d, %Y %H:%M") if @reward.available_from %></p>
+      <p><span class="font-medium text-slate-700">Available Until:</span> <%= @reward.available_until.strftime("%B %d, %Y %H:%M") if @reward.available_until %></p>
+    </div>
+
+    <div class="flex space-x-4 pt-4">
+      <%= link_to 'Edit', edit_reward_path(@reward), class: "inline-block bg-yellow-500 hover:bg-yellow-600 text-white text-sm px-4 py-2 rounded transition" %>
+      <%= link_to 'Back to Rewards', rewards_path, class: "inline-block bg-slate-200 hover:bg-slate-300 text-slate-700 text-sm px-4 py-2 rounded transition" %>
+    </div>
+  </div>
 <% else %>
-  <p>Reward not found.</p>
+  <div class="text-center mt-8 text-slate-600">
+    <p>Reward not found.</p>
+    <%= link_to 'Back to Rewards', rewards_path, class: "mt-4 inline-block bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded" %>
+  </div>
 <% end %>

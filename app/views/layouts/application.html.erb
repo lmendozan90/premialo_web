@@ -22,12 +22,17 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <div>
-      <%= button_to "Logout", destroy_user_session_path, method: :delete  %>
+  <body class="bg-gray-100 h-screen">
+    <div class="flex h-full">
+      <!-- Sidebar -->
+      <%= render 'shared/sidebar' %>
+
+      <!-- Main content -->
+      <main class="flex-1 p-6 overflow-y-auto">
+        <p class="notice text-green-600"><%= notice %></p>
+        <p class="alert text-red-600"><%= alert %></p>
+        <%= yield %>
+      </main>
     </div>
-    <%= yield %>
   </body>
 </html>

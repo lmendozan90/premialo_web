@@ -1,9 +1,8 @@
-<%= form_with(model: reward, local: true) do |form| %>
+<%= form_with(model: reward, local: true, class: "space-y-6 bg-white p-6 rounded-lg shadow-md max-w-xl mx-auto") do |form| %>
   <% if form.object.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(reward.errors.count, "error") %> prohibited this reward from being saved:</h2>
-
-      <ul>
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+      <h2 class="font-semibold mb-2"><%= pluralize(reward.errors.count, "error") %> prohibited this reward from being saved:</h2>
+      <ul class="list-disc list-inside">
         <% form.object.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
@@ -11,32 +10,32 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div>
+    <%= form.label :title, class: "block text-sm font-medium text-slate-700 mb-1" %>
+    <%= form.text_field :title, class: "w-full border border-slate-300 rounded-md px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" %>
   </div>
 
-  <div class="field">
-    <%= form.label :points %>
-    <%= form.number_field :points %>
+  <div>
+    <%= form.label :points, class: "block text-sm font-medium text-slate-700 mb-1" %>
+    <%= form.number_field :points, class: "w-full border border-slate-300 rounded-md px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+  <div>
+    <%= form.label :description, class: "block text-sm font-medium text-slate-700 mb-1" %>
+    <%= form.text_area :description, rows: 4, class: "w-full border border-slate-300 rounded-md px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" %>
   </div>
 
-  <div class="mt-3 mb-3">
-    <%= form.label :available_from, class: "block mb-2 text-sm text-slate-600" %>
-    <%= form.datetime_select :available_from, class: "w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow", include_blank: true %>
+  <div>
+    <%= form.label :available_from, class: "block text-sm font-medium text-slate-700 mb-1" %>
+    <%= form.datetime_select :available_from, include_blank: true, class: "w-full" %>
   </div>
 
-  <div class="mt-3 mb-3">
-    <%= form.label :available_until, class: "block mb-2 text-sm text-slate-600" %>
-    <%= form.datetime_select :available_until, class: "w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow", include_blank: true %>
+  <div>
+    <%= form.label :available_until, class: "block text-sm font-medium text-slate-700 mb-1" %>
+    <%= form.datetime_select :available_until, include_blank: true, class: "w-full" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="pt-4">
+    <%= form.submit "Save Reward", class: "bg-blue-600 text-white font-medium px-6 py-2 rounded-md hover:bg-blue-700 transition duration-200 shadow-sm" %>
   </div>
 <% end %>
